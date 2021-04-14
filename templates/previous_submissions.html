@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% set active_page = 'previous_submission' %}
+
+{% block title %}Previous Submissions - {% endblock %}
+
+{% block content %}
+<div class="col-lg-10 offset-lg-2 my-5">
+
+    <h1>Previously Written User Stories</h1><hr>
+
+    <table>
+        <tr>
+            <th>Tool</th>
+            <th>Work Role</th>
+            <th>User Story</th>
+            <th>Vote</th>
+      </tr>
+        {% for user_story in user_stories %}
+        <tr>
+            <td>{{ user_story.tool }}</td>
+            <td>{{ user_story.work_role }}</td>
+            <td>{{ user_story.user_story }}</td>
+            <td style="text-align: center">
+             <a href="{{ url_for('upvote') }}"><button> + </button></a>
+            </td>
+        </tr>
+        <br>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

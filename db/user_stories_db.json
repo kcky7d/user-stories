@@ -1,0 +1,38 @@
+[
+  {
+    "id": "01",
+    "tool": "Awesome Tool",
+    "work_role": "Data Scientist",
+    "user_story": "As a data scientist, I need to be able sum inputs automatically, so I can increase efficiency.",
+    "num_votes": 2
+  },
+
+  {
+    "id":  "02",
+    "tool": "Horrible Tool",
+    "work_role": "Analyst",
+    "user_story": "As an analyst, I need to be able to search text in images, so I can search through large documents quickly.",
+    "num_votes": 3
+  },
+  {
+    "id":  "03",
+    "tool": "Awesome Tool",
+    "work_role": "Data Scientist",
+    "user_story": "As a data scientist, I need to be able import multiple datasets at one time, so I can aggregate them.",
+    "num_votes": 1
+  },
+  {
+    "id":  "04",
+    "tool": "Great Tool",
+    "work_role": "Manager",
+    "user_story": "As a manager, I need to be able to add my employees to a group, so I can send them mass notifications.",
+    "num_votes": 2
+  },
+  {
+    "id":  "05",
+    "tool": "Horrible Tool",
+    "work_role": "Product Owner",
+    "user_story": "As a product owner, I need the ability to send push notifications to my phone, so I can easily keep track fo the backlog.",
+    "num_votes": 1
+  }
+]

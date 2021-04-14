@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% set active_page = 'previous_submission' %}
+
+{% block title %}Upvote Confirmation - {% endblock %}
+
+{% block content %}
+
+<div class="col-lg-10 offset-lg-2 my-5">
+    <h1>Thank you for your vote</h1><hr>
+    <h3 style="text-align:center;">If you'd like to be updated on this user story please
+        provide your contact info, otherwise feel free to vote for some more user stories! <br><br>
+<form>
+  <div class="form-row">
+    <div class="col">
+      <label>First Name</label>
+      <input type="text" class="form-control" placeholder="Enter your first name (optional)" >
+    </div>
+    <div class="col">
+      <label>Last Name</label>
+      <input type="text" class="form-control" placeholder="Enter your last name (optional)" >
+    </div>
+      <div class="col">
+        <label>Email Address</label>
+      <input type="email" class="form-control" placeholder="Enter your email (optional)" >
+    </div>
+  </div>
+    <div class="form-row">
+    <div class="col">
+        <br>
+        <input type="button" class="btn btn-primary" value="  Submit   " onclick="window.location.href='{{ url_for( 'successful_submission' ) }}';"/>
+        <input type="button" class="btn btn-primary" value=" Vote for Others   " onclick="window.location.href='{{ url_for( 'previous_submissions' ) }}';" />
+
+    </div>
+    </div>
+
+
+
+{% endblock %}

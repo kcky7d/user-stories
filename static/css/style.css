@@ -1,0 +1,50 @@
+body {
+   padding-top: 56px;
+   color: black;
+    background-color: #D0D0D0;
+}
+
+.navbar-brand {
+   padding-top: 0rem;
+   padding-bottom: 0rem;
+}
+
+.card-img-top {
+   object-fit: cover;
+}
+
+a:hover {
+   text-decoration: none;
+}
+
+textarea {
+   resize: none;
+}
+
+.delete-form {
+   display: inline;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+    background-color: black;
+    color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #92a1a1;
+}
+
+tr:nth-child(odd) {
+  background-color: grey;
+}

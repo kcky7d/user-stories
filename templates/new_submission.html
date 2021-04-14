@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% set active_page = 'new_submission' %}
+
+{% block title %}New Submission - {% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-lg-7 offset-lg-2 my-5">
+    <h1>Write a User Story</h1><hr>
+    <form method="POST" action="{{ url_for('new_submission') }}">
+      <div class="form-group">
+        <label>Choose a Tool</label>
+        <SELECT name="tool">
+            {% for tool in tools %}
+            <OPTION value="{{tool.tool}}">{{tool.tool}}</OPTION>
+            {% endfor %}
+        </SELECT>     
+      </div>
+      <div class="form-group">
+        <label>As a</label>
+          <SELECT name="role">
+            {% for work_role in work_roles %}
+            <OPTION value="{{work_role.work_role}}">{{work_role.work_role}}</OPTION>
+            {% endfor %}
+          </SELECT>  
+      </div>
+        <div class="form-group">
+        <label>I need</label>
+        <textarea required minlength="10" class="form-control" name="feature" rows="2" placeholder="enter the feature you are requesting"></textarea>
+      </div>
+        <div class="form-group">
+        <label>so that</label>
+        <textarea required minlength="10" class="form-control" name="rationale" rows="2" placeholder="enter why you need this feature"></textarea>
+      </div>
+      <hr>
+      <input class="btn btn-primary form-control" type="submit" value="Submit">
+    </form>
+  </div>
+</div>
+{% endblock %}

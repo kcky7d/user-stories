@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Confirm Submission -{% endblock %}
+
+{% block content %}
+<div class="col-lg-10 offset-lg-2 my-5">
+    <h2>Please review the user story you wrote for: {{ submission.tool }} <br><br></h2>
+
+<hr>
+        <h3> As a {{ submission.work_role }}, I need {{ submission.feature | lower  }}, so that
+        {{ submission.rationale | lower }}. </h3> <br><br>
+        <h4>If you are happy with your story and would like to be contacted to discuss further,<br> please fill out the form
+        and click <em><b>Submit</b></em>, otherwise click <em><b>Edit</b></em> to fix your user story</h4> <br>
+
+    <form>
+      <div class="form-row">
+        <div class="col">
+          <label>First Name</label>
+          <input type="text" class="form-control" placeholder="Enter your first name (optional)" >
+        </div>
+        <div class="col">
+          <label>Last Name</label>
+          <input type="text" class="form-control" placeholder="Enter your last name (optional)" >
+        </div>
+          <div class="col">
+            <label>Email Address</label>
+          <input type="email" class="form-control" placeholder="Enter your email (optional)" >
+        </div>
+      </div>
+        <div class="form-row">
+        <div class="col">
+            <br>
+            <input type="button" class="btn btn-primary" value="  Submit   " onclick="window.location.href='{{ url_for( 'successful_submission' ) }}'"/>
+            <input type="button" class="btn btn-primary" value="   Edit   " onclick="history.back(-1)" />
+
+        </div>
+
+    </form>
+    </div>
+{% endblock %}
