@@ -7,25 +7,12 @@
 <div class="col-lg-10 offset-lg-2 my-5">
 
     <h1>Previously Written User Stories</h1><hr>
+    <p style="color:blue"><em>Headings in blue are sortable</em></p>
+    <!-- console.log(table_html) -->
 
-    <table>
-        <tr>
-            <th>Tool</th>
-            <th>Work Role</th>
-            <th>User Story</th>
-            <th>Vote</th>
-      </tr>
-        {% for user_story in user_stories %}
-        <tr>
-            <td>{{ user_story.tool }}</td>
-            <td>{{ user_story.work_role }}</td>
-            <td>{{ user_story.user_story }}</td>
-            <td style="text-align: center">
-             <a href="{{ url_for('upvote') }}"><button> + </button></a>
-            </td>
-        </tr>
-        <br>
-        {% endfor %}
-    </table>
+    {{table_html}}
+
+
 </div>
+
 {% endblock %}
