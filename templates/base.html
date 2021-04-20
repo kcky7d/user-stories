@@ -12,9 +12,14 @@
          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
          crossorigin="anonymous"
       />
+      <script src="https://kit.fontawesome.com/91e547386c.js" crossorigin= "anonymous"></script>
       <link
          rel="stylesheet"
          href="{{ url_for('static', filename='css/style.css') }}"
+      />
+      <link
+         rel="stylesheet"
+         href="{{ url_for('static', filename='css/darkMode.css') }}"
       />
 </head>
 
@@ -72,14 +77,21 @@
                         >About the Team</a
                      >
                   </li>
+                  <li
+                     class="nav-item {{ 'active' if active_page == 'about' else '' }}"
+                  >
+                     <a class="nav-link"
+                        ><i id="dark-mode-btn" class="toggler far fa-moon"></i></a
+                     >
+                  </li>
                </ul>
             </div>
          </div>
       </nav>
 
     <div class="container">
-    {% block content %}{% endblock %}
-</div>
+       {% block content %}{% endblock %}
+   </div>
       <script
          src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
          integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -95,7 +107,9 @@
          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
          crossorigin="anonymous"
       ></script>
-
+      <script
+         src= '/static/darkMode.js'
+      ></script>
 </body>
 
 </html>
