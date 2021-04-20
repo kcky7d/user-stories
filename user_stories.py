@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, url_for, flash, Markup
-import string
-from db.model import tools_db, user_stories, work_roles
+import string, json
+from db.model import tools_db, user_stories, work_roles, load_user_stories
 from flask_table import Table, Col, ButtonCol
+from werkzeug.serving import run_simple
+
 
 app = Flask(__name__)
 
@@ -24,7 +26,7 @@ class SortableTable(Table):
 
 class Item(object):
     def __init__(self, id, tool, work_role, user_story):
-        self.id = id
+        self.id = int(id)
         self.tool = tool
         self.work_role = work_role
         self.user_story = user_story
@@ -48,11 +50,14 @@ class Item(object):
 
 
 def strip_punctuation(submission):
-    print(submission['feature'].translate(str.maketrans('','',string.punctuation)))
     submission['feature'] = submission['feature'].translate(str.maketrans('','',string.punctuation))
     submission['rationale'] = submission['rationale'].translate(str.maketrans('','',string.punctuation))
 
     return submission
+
+def write_submission(new_submission, file='db/user_stories_db.json'):
+    with open(file, 'w') as f:
+        json.dump(new_submission, f)
 
 
 @app.route("/")
@@ -71,20 +76,40 @@ def new_submission():
     if request.method == "POST":
 
         submission = {"tool": request.form["tool"],
-                      "work_role": request.form["role"],
-                      "feature": request.form["feature"],
-                      "rationale": request.form["rationale"]
+                    "work_role": request.form["role"],
+                    "feature": request.form["feature"],
+                    "rationale": request.form["rationale"]
                     }
 
         submission = strip_punctuation(submission)
+
+        confirm_submission(submission)
         return render_template("confirm_submission.html", submission=submission)
     else:
         return render_template('new_submission.html', tools=tools_db, work_roles=work_roles)
 
-
+@app.route("/confirm_submission", methods=["GET", "POST"])
+def confirm_submission(submission):
+    if request.method == "POST":
+        print(submission)
+        print("looking good")
+        
+        with open('db/user_stories_db.json') as json_file:
+            data = json.load(json_file)
+            temp = data
+            id_num = len(temp) + 1
+            new_submission = {"id": str(id_num), "tool": submission['tool'], "work_role": submission['work_role'].title(), 
+                    "user_story": 'As a {}, I need {}, so that {}'.format(submission['work_role'],
+                    submission['feature'].lower(), submission['rationale'].lower())}
+            temp.append(new_submission)
+        write_submission(data)
+        return render_template("successful_submission.html")
+    else:
+        return render_template("confirm_submission.html")
 
 @app.route("/successful_submission")
 def successful_submission():
+    print('hell yeah')
     return render_template("successful_submission.html")
 
 
@@ -96,11 +121,8 @@ def previous_submissions():
                                                 sort_by=sort,
                                                 sort_reverse=reverse)
     table_html = Markup(table.__html__())
-    print(table_html)
+
     return render_template("previous_submissions.html", table_html=table_html)
-
-    # return table.__html__()
-
 
 
 @app.route("/upvote", methods=["GET", "POST"])
@@ -116,5 +138,4 @@ def about():
 @app.route("/confirm_vote")
 def confirm_vote():
     return render_template("confirm_vote.html")
-
 
