@@ -4,7 +4,8 @@ body {
     background-color: #D0D0D0;
 }
 
-.navbar-brand {
+.navbar-custom {
+   background-color: #343a40;
    padding-top: 0rem;
    padding-bottom: 0rem;
 }
@@ -16,6 +17,11 @@ body {
 a:hover {
    text-decoration: none;
 }
+
+.welcome-link{
+   color:black;
+}
+
 
 textarea {
    resize: none;
@@ -37,7 +43,7 @@ td, th {
 }
 
 th {
-    background-color: black;
+    background-color: #343a40;
     color: white;
 }
 
@@ -47,4 +53,39 @@ tr:nth-child(even) {
 
 tr:nth-child(odd) {
   background-color: grey;
+}
+
+/* CSS styling for Dark-mode and light mode toggle */
+
+i.toggler {
+    color: white;
+    float: right;
+    font-size: 20px;
+}
+
+.dark-mode {
+    background-color: #343a40;
+}
+
+.dark-mode i.toggler {
+    color: grey;
+}
+
+.dark-mode .container {
+    background-color: #343a40;
+    color: white;
+}
+
+.dark-mode .navbar-custom {
+    background-color: #d0d0d0;
+
+ }
+
+
+.dark-mode h1, .dark-mode h3, .dark-mode h4 {
+    color: white;
+}
+
+.dark-mode .welcome-link{
+   color: darkgrey;
 }

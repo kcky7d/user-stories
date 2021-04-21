@@ -1,5 +1,6 @@
 /* Developed from https://medium.com/geekculture/how-to-toggle-between-light-dark-mode-7efcb48d6211 */
 
+
 function myFunction() {
     var element = document.body;
     element.classList.toggle("dark-mode");
