@@ -1,13 +1,11 @@
 body {
    padding-top: 56px;
    color: black;
-    background-color: #D0D0D0;
+   background-color: #D0D0D0;
 }
 
-.navbar-custom {
-   background-color: #343a40;
-   padding-top: 0rem;
-   padding-bottom: 0rem;
+.light-mode{
+    background-color: lightgrey;
 }
 
 .card-img-top {
@@ -64,7 +62,7 @@ i.toggler {
 }
 
 .dark-mode {
-    background-color: #343a40;
+    background-color:#343a40;
 }
 
 .dark-mode i.toggler {
@@ -76,15 +74,6 @@ i.toggler {
     color: white;
 }
 
-.dark-mode .navbar-custom {
-    background-color: #d0d0d0;
-
- }
-
-
-.dark-mode h1, .dark-mode h3, .dark-mode h4 {
-    color: white;
-}
 
 .dark-mode .welcome-link{
    color: darkgrey;
